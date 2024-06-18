@@ -1,0 +1,42 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<BidDTO>;
+
+
+<h3>لیست پیشنهادات </h3>
+<div class="col-6 text-start">
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> شناسه </th>
+            <th> نام متخصص </th>
+            <th> تاریخ انجام </th>
+            <th> قیمت پیشنهادی </th>
+            <th> وضعیت </th>
+            <th> اعمالات </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bid in Model)
+        {
+            <tr>
+                <td>@bid.Id</td>
+                <td>@bid.ExpertName</td>
+                <td>@bid.DeadLine</td>
+                <td>@bid.Price</td>
+                @if(bid.IsAccepted == true)
+                {
+                    <td> توسط مشتری تایید شده </td>
+                }
+                else
+                {
+                    <td> توسط مشتری تایید نشده </td>
+                }
+                <td>
+                    <a asp-controller="Admin" asp-action="DeleteBid" asp-route-Id="@bid.Id"> حذف پیشنهاد </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

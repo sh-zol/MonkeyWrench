@@ -1,0 +1,31 @@
+﻿@using Domain.Core.User.DTOs;
+@model AdminDTO;
+<h5>
+    خوش آمدید
+    @Model.FullName
+</h5>
+
+@if(Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
+{
+    <a asp-controller="Account" asp-action="UpdateProfileAdmin">
+         پروفایل خود را آپدیت کنید
+    </a>
+}
+else
+{
+    <img src="@Model.FileLocation" width="100px" />
+    <p>
+        درباره من:
+        @Model.AboutMe
+    </p>
+    <p>
+        آدرس:
+        @Model.Address
+    </p>
+}
+
+<a asp-controller="Admin" asp-action="BidList" class="btn btn-primary"> لیست پیشنهادات </a>
+<a asp-controller="Admin" asp-action="RequestList" class="btn btn-primary"> لیست درخواست‌ها </a>
+<a asp-controller="Admin" asp-action="CategoryList" class="btn btn-primary">لیست دسته بندی‌ها</a>
+<a asp-controller="Admin" asp-action="ServiceList" class="btn btn-primary"> لیست سرویس‌ها</a>
+<a asp-controller="Admin" asp-action="CommentList" class="btn btn-primary">لیست کامنت‌عا  ‌</a>

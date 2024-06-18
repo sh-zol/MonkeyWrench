@@ -1,0 +1,206 @@
+﻿<!doctype html>
+<html lang="fa">
+
+
+<!-- Mirrored from rtlpr.ir/RTL/noonpost/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Feb 2024 18:53:26 GMT -->
+<head>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- favicon -->
+    <link rel="icon" sizes="16x16" href="assets/img/favicon.png">
+
+    <!-- Title -->
+    <title> Monkey Wrench </title>
+
+    <!-- CSS Plugins -->
+    <link rel="stylesheet" href="~/css/all.css">
+    <link rel="stylesheet" href="~/css/elegant-font-icons.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+
+    <!-- main style -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+</head>
+
+<body class="rtl">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+            <!--/-->
+            <!--navbar-collapse-->
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav ml-auto mr-auto">
+                    <li class="nav-item dropdown">
+                        <a asp-controller="Home" asp-action="Index"> صفحه نخست </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> سرویس و دسته‌بندی‌ها </a>
+                        <ul class="dropdown-menu fade-up">
+                            <li>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="CategoryList"> لیست دسته بندی‌ها  </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" asp-controller="Home" asp-action="ServiceList"> لیست سرویس‌ها </a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"> ارتباط با ما </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> حساب کاربری </a>
+                        <ul class="dropdown-menu fade-up">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                @if (User.IsInRole("Customer"))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Customer" asp-action="Index"> پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Customer" asp-action="CustomerRequests"> لیست درخواست‌ها </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="UpdateProfileCustomer"> ‌آپدیت پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Logout"> ‌خروج </a>
+                                    </li>
+                                }
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Index"> پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="UpdateProfileAdmin"> ‌آپدیت پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Logout"> ‌خروج </a>
+                                    </li>
+                                }
+                                @if (User.IsInRole("Expert"))
+                                {
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Expert" asp-action="Index"> پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="UpdateProfileExpert"> ‌آپدیت پروفایل </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="UpdateExpertSkills"> ‌اضافه کردن لیست خدمات </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Expert" asp-action="GetAllExpertRequests"> لیست درخواست‌ها </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Logout"> ‌خروج </a>
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Login"> ورود‌ </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-controller="Account" asp-action="Register"> ‌ثبت‌نام </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html"> ارتباط با ما </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="social-icones">
+                <ul class="list-inline">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="search-icon">
+                <i class="icon_search"></i>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <!--/-->
+    <!--footer-->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <p>کپی رایت © 2021. کلیه حقوق محفوظ است</p>
+                    </div>
+                    <div class="back">
+                        <a href="#" class="back-top">
+                            <i class="arrow_up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--Search-form-->
+    <div class="search">
+        <div class="container-fluid">
+            <div class="search-width  text-center">
+                <button type="button" class="close">
+                    <i class="icon_close"></i>
+                </button>
+                <form class="search-form" action="#">
+                    <input type="search" value="" placeholder="دنبال چی میگردی؟">
+                    <button type="submit" class="search-btn">جستجو</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/-->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/js/jquery-3.5.0.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- JS Plugins  -->
+    <script src="~/js/ajax-contact.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/switch.js"></script>
+
+    <!-- JS main  -->
+    <script src="~/js/main.js"></script>
+    @RenderBody();
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+
+<!-- Mirrored from rtlpr.ir/RTL/noonpost/html/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Feb 2024 18:53:57 GMT -->
+</html>

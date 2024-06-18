@@ -1,0 +1,28 @@
+﻿@using Domain.Core.User.DTOs
+@model CustomerDTO
+
+<h5>
+    خوش آمدید
+    @Model.FullName
+</h5>
+
+@if(Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
+{
+    <a asp-controller="Account" asp-action="UpdateProfileCustomer">
+        پروفایلتون رو آپدیت کنید
+    </a>
+}
+else
+{
+    <img src="@Model.FileLocation" width="100px" />
+    <p>
+        درباره من:
+        @Model.AboutMe
+    </p>
+    <p>
+        آدرس:
+        @Model.Address
+    </p>
+}
+
+<a asp-controller="Customer" asp-action="CustomerRequests" class="btn btn-primary"> لیست درخواست‌ها </a>

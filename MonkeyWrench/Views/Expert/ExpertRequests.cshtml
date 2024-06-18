@@ -1,0 +1,49 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<RequestDTO>;
+<h3>لیست سفارشات</h3>
+<table class="table table-striped table-light">
+    <thead>
+        <tr>
+            <th>شماره سفارش</th>
+            <th>تاریخ ثبت</th>
+            <th>نام سرویس</th>
+            <th>نام مشتری</th>
+            <th>قیمت پایه</th>
+            <th>آدرس</th>
+            <th>زمان درخواست</th>
+            <th>اعمالات</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Id</td>
+                <td>@request.CreatedDate</td>
+                <td>@request.Service.Title</td>
+                <td>@request.Customer.FullName</td>
+                <td>@request.Price</td>
+                <td>@request.Address</td>
+                <td>@request.DeadLine</td>
+                <td>
+                    <a asp-controller="Expert" asp-action="RequestDetails" asp-route-requestId="@request.Id" class="btn btn-primary">جزئیات</a>
+                </td>
+                @if (request.StatusId == 1)
+                {
+                    <td>
+                        <a asp-controller="Expert" asp-action="CreateBid" asp-route-requestId="@request.Id">ارسال پیشنهاد</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        پیشنهاد ارسال شده
+                    </td>
+                }
+            </tr>
+
+        }
+    </tbody>
+</table>

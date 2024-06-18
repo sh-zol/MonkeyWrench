@@ -1,0 +1,57 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model RequestDTO;
+
+@{
+    ViewData["Title"] = "جزئیات";
+}
+<div class="row">
+    <div class="col-6">
+        <h3>جزئیات سفارش</h3>
+    </div>
+</div>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td>ساعت ایجاد</td>
+            <td>@Model.CreatedDate</td>
+        </tr>
+        <tr>
+            <td>نوع سرویس</td>
+            <td>@Model.Service.Title</td>
+        </tr>
+        <tr>
+            <td>قیمت پایه</td>
+            <td>@Model.Price</td>
+        </tr>
+        <tr>
+            <td>آدرس</td>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td>ساعت انجام</td>
+            <td>@Model.DeadLine</td>
+        </tr>
+        <tr>
+            <td>نام مشتری</td>
+            <td>@Model.CustomerName</td>
+        </tr>
+        <tr>
+            <td>نام متخصص</td>
+            <td>@Model.ExpertName</td>
+        </tr>
+        <tr>
+            <td>وضعیت سفارش</td>
+            <td>@Model.StatusTitle</td>
+        </tr>
+    </table>
+    @if(Model.File == null || Model.FileLocation == null)
+    {
+        <p>
+            عکس ندارد
+        </p>
+    }
+    else
+    {
+        <img src="@Model.FileLocation" width="200px" />
+    }
+</div>

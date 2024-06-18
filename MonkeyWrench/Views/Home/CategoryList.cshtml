@@ -1,0 +1,25 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<CategoryDTO>;
+
+@foreach(var item in Model)
+{
+    @if(item.IsActive == true)
+    {
+        <div class="card">
+            <div class="post-card">
+                <div class="post-card-image">
+                    <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id">
+                        <img src="~/Images/WallpaperDog-10970322.png" width="200px" alt="">
+                    </a>
+                </div>
+                <div class="post-card-content">                    <h5>
+                        <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id">دیدن سرویس های زیرمجموعه</a>
+                    </h5>
+                    <p>
+                        @item.Title
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+}

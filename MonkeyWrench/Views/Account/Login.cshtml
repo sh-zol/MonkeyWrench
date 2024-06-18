@@ -1,0 +1,27 @@
+﻿@using MonkeyWrench.Models.VMs;
+@model LoginVM;
+
+<section class="section pt-55 mb-50">
+    <div class="container">
+        <div class="sign widget ">
+            <div class="section-title">
+                <h5>ورود به حساب</h5>
+            </div>
+            <form asp-controller="Account" asp-action="Login" class="sign-form widget-form " method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="نام کاربری *" asp-for="Email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="رمز عبور *" asp-for="Password">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn-custom">ورود به حساب</button>
+                </div>
+
+                <p class="form-group text-center">حساب کاربری ندارید؟ <a asp-controller="Account" asp-action="Register" class="btn-link">ثبت نام کنید</a> </p>
+
+            </form>
+        </div>
+    </div>
+</section>        

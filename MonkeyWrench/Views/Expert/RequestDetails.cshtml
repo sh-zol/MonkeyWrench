@@ -1,0 +1,70 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model RequestDTO;
+
+<div class="row">
+    <div class="col-6">
+        <h3>جزئیات سفارش</h3>
+    </div>
+</div>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <td>ساعت ایجاد</td>
+            <td>@Model.CreatedDate</td>
+        </tr>
+        <tr>
+            <td>نوع سرویس</td>
+            <td>@Model.Service.Title</td>
+        </tr>
+        <tr>
+            <td>قیمت پایه</td>
+            <td>@Model.Price</td>
+        </tr>
+        <tr>
+            <td>آدرس</td>
+            <td>@Model.Address</td>
+        </tr>
+        <tr>
+            <td>ساعت انجام</td>
+            <td>@Model.DeadLine</td>
+        </tr>
+        <tr>
+            <td>نام مشتری</td>
+            <td>@Model.CustomerName</td>
+        </tr>
+        <tr>
+            <td>نام متخصص</td>
+            @if(Model.ExpertName == null){
+            <td>
+                هنوز انتخاب نشده
+            </td>
+            }
+            else{
+                <td>
+                    @Model.ExpertName
+                </td>
+            }
+        </tr>
+        <tr>
+            <td>وضعیت سفارش</td>
+            <td>@Model.StatusTitle</td>
+        </tr>
+        @if (Model.StatusId == 2 || Model.StatusId == 3 || Model.StatusId == 4)
+        {
+            <tr>
+                <td>مرحله بعد</td>
+                <td><a asp-controller="Expert" asp-action="NextStatus" asp-route-requestId="@Model.Id" class="btn btn-primary">وضعیت بعدی</a></td>
+            </tr>
+        }
+        @if(Model.StatusId == 5)
+        {
+            <tr>
+                <td>
+                    سفارش انجام شده
+                </td>
+            </tr>
+        }
+
+    </table>
+    <img src="@Model.FileLocation" width="200" />
+</div>

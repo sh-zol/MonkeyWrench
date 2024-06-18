@@ -1,0 +1,46 @@
+﻿@using MonkeyWrench.Models.VMs;
+@model RegisterVM;
+
+<section class="section pt-55 mb-50">
+    <div class="container">
+        <div class="sign widget ">
+            <div class="section-title">
+                <h5> ثبت‌نام </h5>
+            </div>
+            <form asp-controller="Account" asp-action="Register" class="sign-form widget-form " method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="ایمیل"  asp-for="Email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="نام و نام خانوادگی" asp-for="FullName">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="رمز عبور" asp-for="Password">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="شماره تلفن" asp-for="PhoneNumber">
+                </div>
+                <div class="sign-controls form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input id="IsExpert" asp-for="IsExpert" type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label" for="IsExpert"> متخصص </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input id="IsCustomer" asp-for="IsCustomer" type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label" for="IsCustomer"> مشتری  </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input id="IsAdmin" asp-for="IsAdmin" type="checkbox" class="custom-control-input">
+                        <label class="custom-control-label" for="IsAdmin"> ادمین  </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn-custom"> ایجاد حساب </button>
+                </div>
+
+                <p class="form-group text-center">حساب کاربری دارید؟ <a asp-controller="Account" asp-action="Login" class="btn-link">وارد شوید</a> </p>
+
+            </form>
+        </div>
+    </div>
+</section>        

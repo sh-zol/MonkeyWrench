@@ -1,0 +1,31 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<ServiceDTO>;
+
+<h3>لیست سرویس ها</h3>
+<div class="col-6 text-start">
+    <a asp-controller="Admin" asp-action="CreateService" class="btn btn-success">اضافه کردن سرویس  </a>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام </th>
+            <th>اعمالات</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var service in Model)
+        {
+            <tr>
+                <td>@service.Id</td>
+                <td>@service.Title</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="DeleteService" asp-route-id="@service.Id">
+                        حذف سرویس
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

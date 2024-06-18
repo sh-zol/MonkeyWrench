@@ -1,0 +1,46 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<RequestDTO>;
+
+<h3>لیست سفارشات</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>تاریخ ساخت</th>
+            <th>نام مشتری</th>
+            <th>سرویس</th>
+            <th>نام متخصص</th>
+            <th>قیمت سرویس</th>
+            <th>آدرس مشتری</th>
+            <th>زمان مراجعه متخصص به محل</th>
+            <th>وضعیت سفارش</th>
+            <th>اعمالات</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.Id</td>
+                <td>@request.CreatedDate</td>
+                <td>@request.CustomerName</td>
+                <td>@request.Service.Title</td>
+                <td>@request.ExpertName</td>
+                <td>@request.Price هزارتومان</td>
+                <td>@request.Address</td>
+                <td>@request.DeadLine</td>
+                <td>
+                    @request.StatusTitle
+                </td>
+                <td>
+                    <a asp-controller="Admin" asp-action="RequestBids" asp-route-requestId="@request.Id" asp-route-expertUserId="@request.ExpertId" class="btn btn-info">نمایش پیشنهادات</a>
+                    <a asp-controller="Admin" asp-action="SeeRequest" asp-route-id="@request.Id" class="btn btn-info">جزئیات</a>
+                    <a asp-controller="Admin" asp-action="EditRequest" asp-route-id="@request.Id" class="btn btn-warning">ویرایش</a>
+                    <a asp-controller="Admin" asp-action="DeleteRequest" asp-route-id="@request.Id" class="btn btn-danger">حذف</a>
+                    <a asp-controller="Admin" asp-action="BidList"> لیست کلی پیشنهادات </a>
+                </td>
+                </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,68 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model RequestDTO;
+
+<form method="post" asp-controller="Customer" asp-action="CreateRequest" enctype="multipart/form-data">
+
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">ثبت درخواست</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                        <label asp-for="DeadLine"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="datetime-local" asp-for="DeadLine" class="form-control" />
+                        <span asp-validation-for="DeadLine" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                        <label asp-for="Title"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                        <label asp-for="Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                            <label asp-for="File" class="control-label"> عکس </label>
+                            <input asp-for="File" type="file" class="form-control" />
+                            <span asp-validation-for="File" class="text-danger"></span>
+                        </div>
+                <div class="form-group">
+                    <div class="d-inline-flex justify-content-around">
+                        <button type="submit" asp-route-serviceId="@ViewBag.ServiceId" class="btn btn-primary mx-1">ثبت سفارش</button>
+                        <div>
+                            <a asp-controller="Customer" asp-action="Index" class="btn btn-success">بازگشت</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>

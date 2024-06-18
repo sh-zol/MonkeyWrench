@@ -1,0 +1,29 @@
+﻿@using Domain.Core.HomeService.DTOS;
+@model List<CommentDTO>;
+<h3>لیست نظرات </h3>
+<div class="col-6 text-start">
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>شناسه</th>
+            <th>نام </th>
+            <th>اعمالات</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in Model)
+        {
+            <tr>
+                <td>@comment.Id</td>
+                <td>@comment.Description</td>
+                <td>
+                    <a asp-controller="Customer" asp-action="Index">
+                        بازگشت به داشبورد
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

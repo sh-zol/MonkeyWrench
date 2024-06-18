@@ -1,0 +1,29 @@
+﻿@using Domain.Core.User.DTOs;
+@model ExpertDTO;
+
+
+<h5>
+    سلام خوش آمدید
+    @Model.FullName
+</h5>
+@if(Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
+{
+    <a asp-controller="Account" asp-action="UpdateProfileExpert">
+        پروفایل خودتون رو آپدیت کنید
+    </a>
+}
+else
+{
+    <img src="@Model.FileLocation" width="200" />
+    <p>
+        درباره من:
+        @Model.AboutMe
+    </p>
+    <p>
+        آدرس:
+        @Model.Address
+    </p>
+}
+<a asp-controller="Expert" asp-action="ExpertRequests" class="btn btn-primary"> درخواست‌های من </a>
+<a asp-controller="Account" asp-action="UpdateExpertSkills" class="btn btn-primary"> اضافه کردن لیست خدمات </a>
+<a asp-controller="Expert" asp-action="ExpertFinished" class="btn btn-primary"> لیست سفارش‌های انجام شده </a>
