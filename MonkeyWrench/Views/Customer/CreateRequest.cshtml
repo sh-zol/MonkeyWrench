@@ -12,37 +12,32 @@
             <div class="col-8">
 
                 <div class="form-group row p-3">
-                    <div class="col-4">
-                        <label asp-for="DeadLine"></label>
-                    </div>
                     <div class="col-8">
+                        <label asp-for="DeadLine"> زمان موردنظر </label>
                         <input type="datetime-local" asp-for="DeadLine" class="form-control" />
                         <span asp-validation-for="DeadLine" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row p-3">
-                    <div class="col-4">
-                        <label asp-for="Title"></label>
-                    </div>
+                    
                     <div class="col-8">
+                        <label asp-for="Title"> موضوع </label>
                         <input type="text" asp-for="Title" class="form-control" />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row p-3">
-                    <div class="col-4">
-                        <label asp-for="Description"></label>
-                    </div>
                     <div class="col-8">
+                        <label asp-for="Description"> توضیحات </label>
                         <input type="text" asp-for="Description" class="form-control" />
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row p-3">
-                    <div class="col-4">
-                        <label asp-for="Address"></label>
-                    </div>
                     <div class="col-8">
+                        <label asp-for="Address">
+                            آدرس
+                        </label>
                         <input type="text" asp-for="Address" class="form-control" />
                         <span asp-validation-for="Address" class="text-danger"></span>
                     </div>

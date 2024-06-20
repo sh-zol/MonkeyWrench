@@ -23,6 +23,8 @@ namespace Domain.Core.HomeService.Entities
         public int? Price { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? DeadLine {  get; set; }
+        public string? DeadLineFa {  get; set; }
+        public string? CreatedDateFa {  get; set; }
         public Customer Customer { get; set; }
         public int CustomerId { get; set; }
         public Expert? Expert { get; set; }

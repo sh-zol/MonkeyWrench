@@ -106,11 +106,12 @@ namespace MonkeyWrench
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.CustomExceptionHandlingMiddleWare();
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-          //  app.CustomExceptionHandlingMiddleWare();
+            app.CustomExceptionHandlingMiddleWare();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

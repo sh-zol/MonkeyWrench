@@ -34,7 +34,7 @@
                     @request.StatusTitle
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="RequestBids" asp-route-requestId="@request.Id" asp-route-expertUserId="@request.ExpertId" class="btn btn-info">نمایش پیشنهادات</a>
+                    <a asp-controller="Admin" asp-action="RequestBids" asp-route-requestId="@request.Id" class="btn btn-info">نمایش پیشنهادات</a>
                     <a asp-controller="Admin" asp-action="SeeRequest" asp-route-id="@request.Id" class="btn btn-info">جزئیات</a>
                     <a asp-controller="Admin" asp-action="EditRequest" asp-route-id="@request.Id" class="btn btn-warning">ویرایش</a>
                     <a asp-controller="Admin" asp-action="DeleteRequest" asp-route-id="@request.Id" class="btn btn-danger">حذف</a>

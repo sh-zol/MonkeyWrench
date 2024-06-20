@@ -99,5 +99,20 @@
             }
         </tr>
         </table>
-        <img src="@Model.FileLocation" width="200px" />
+    @if(Model.FileLocation == null)
+    {
+        <p>
+            عکس ندارد
+        </p>
+    }
+    else
+    {
+        <div class="container-fluid">
+            <div class="col-lg-12">
+                <div class="post-card-image">
+                    <img src="@Model.FileLocation" alt="">
+                </div>
+            </div>
+        </div>
+    }
 </div>

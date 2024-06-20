@@ -19,6 +19,8 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Services.HomeService;
 using Services.User;
+using System.Security.Cryptography.Xml;
+using System.Text.Json.Serialization;
 
 namespace MonkeyWrenchAPI
 {
@@ -98,21 +100,19 @@ namespace MonkeyWrenchAPI
             });
             #endregion
 
+            #region Json Configuration
 
-            builder.Services.AddControllers();
-            
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            });
+
+            #endregion
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(/*c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "MonkeyWrenchAPI",
-                    Version = "v1",
-                });
-            }*/);
-
-            // builder.Services.AddDbContext<AppDBContext>(o => o.UseSqlServer(@"Data Source=DESKTOP-DL0I6I3\\SHZSQLEXPRESSDB;Initial Catalog=MonkeyWrench;Integrated Security=True;Encrypt=True;Trust Server Certificate=True;"));
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
@@ -122,8 +122,6 @@ namespace MonkeyWrenchAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            
 
             app.UseHttpsRedirection();
 

@@ -41,7 +41,41 @@
         </tr>
         <tr>
             <td>وضعیت سفارش</td>
-            <td>@Model.StatusTitle</td>
+            <td>وضعیت سفارش</td>
+            @if (Model.StatusId != null)
+            {
+                @if (Model.StatusId == 1)
+                {
+                    <td>
+                        در انتظار پیشنهاد متخصصین
+                    </td>
+                }
+                @if (Model.StatusId == 2)
+                {
+                    <td>
+                        پیشنهاد متخصص تایید شد
+                    </td>
+                }
+                @if (Model.StatusId == 3)
+                {
+                    <td>
+                        متخصص به محل رسیده و در حال انجام سفارش است
+                    </td>
+                }
+                @if (Model.StatusId == 4)
+                {
+                    <td>
+                        در انتظار پرداخت
+                    </td>
+                }
+                @if (Model.StatusId == 5)
+                {
+                    <td>
+                        سفارش انجام شده
+                    </td>
+                }
+
+            }
         </tr>
     </table>
     @if(Model.File == null || Model.FileLocation == null)
@@ -52,6 +86,12 @@
     }
     else
     {
-        <img src="@Model.FileLocation" width="200px" />
+        <div class="container-fluid">
+            <div class="col-lg-12">
+        <div class="post-card-image">
+                <img src="@Model.FileLocation" alt="">
+        </div>
+        </div>
+        </div>
     }
 </div>

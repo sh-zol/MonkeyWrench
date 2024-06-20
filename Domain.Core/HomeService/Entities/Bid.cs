@@ -22,6 +22,8 @@ namespace Domain.Core.HomeService.Entities
         [DisplayName("قیمت پیشنهادی")]
         public int Price { get; set; }
         public DateTime? CreatedAt { get; set; }
+        public string? CreatedDateFa {  get; set; }
+        public string? DeadLineFa {  get; set; }
         public Expert Expert { get; set; }
         public int ExpertId { get; set; }
         public bool IsAccepted { get; set; }

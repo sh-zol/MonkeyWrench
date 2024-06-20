@@ -1,4 +1,5 @@
 ﻿using DataBase.Context;
+using FrameWork;
 using Domain.Core.HomeService.Contracts.Repositories;
 using Domain.Core.HomeService.DTOS;
 using Domain.Core.User.DTOs;
@@ -35,7 +36,7 @@ namespace DataAccess.HomeService
                 CustomerId = requestDTO.CustomerId,
                 ServiceId = requestDTO.ServiceId,
                 DeadLine = requestDTO.DeadLine,
-                Status = requestDTO.Status,
+                DeadLineFa = requestDTO.DeadLineFa,
                 FileLocation = requestDTO.FileLocation,
                 StatusId = 1,
             };

@@ -1,23 +1,38 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model ServiceDTO;
 
-
-<img src="~/Images/WallpaperDog-10970322.png" sizes="200px" />
-<h5>
-    @Model.Title
-</h5>
-<p>
-    @Model.Description
-</p>
-@if (User.IsInRole("Customer"))
-{
-    <a asp-controller="Customer" asp-action="CreateRequest" asp-route-serviceId="@Model.Id">
-        درخواست بدهید
-    </a>
-}
-else
-{
-    <a asp-controller="Account" asp-action="Login">
-        برای دادن درخواست وارد شوید
-    </a>
-}
+<section class="section pt-55 ">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 mb-20">
+                <!--Post-single-->
+                <div class="post-single">
+                    <div class="post-single-image">
+                        <img src="~/Images/WallpaperDog-10970322.png" alt="">
+                    </div>
+                    <div class="post-single-content">
+                        <h4>@Model.Title</h4>
+                        <p>
+                            @Model.Description
+                        </p>
+                    </div>
+                    <div class="post-single-body">
+                        
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <a asp-controller="Customer" asp-action="CreateRequest" asp-route-serviceId="@Model.Id" class="btn btn-primary">
+                                درخواست بدهید
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-primary">
+                                برای دادن درخواست وارد شوید
+                            </a>
+                        }
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                </section>

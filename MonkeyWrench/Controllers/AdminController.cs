@@ -88,8 +88,8 @@ namespace MonkeyWrench.Controllers
         [HttpGet]
         public async Task<IActionResult> RequestBids(int requestId, CancellationToken cancellationToken)
         {
-            var bids = await _request.GetAllByRequestId(requestId, cancellationToken);
-            foreach (var bid in bids)
+            var bids = await _bid.GetAllByRequestId(requestId, cancellationToken);
+            if(bids != null)
             {
                     return View(bids);
             }

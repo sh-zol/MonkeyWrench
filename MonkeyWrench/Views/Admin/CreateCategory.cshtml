@@ -13,10 +13,12 @@
 
                 <div class="form-group row p-3">
                     <div class="col-4">
-                        <label asp-for="Title"></label>
+                        <label asp-for="Title">
+                            نام موضوع
+                        </label>
                     </div>
                     <div class="col-8">
-                        <input type="text" asp-for="Title" class="form-control" />
+                        <input type="text" asp-for="Title" class="form-control" placeholder="موضوع" />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>

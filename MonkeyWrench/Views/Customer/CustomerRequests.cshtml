@@ -38,7 +38,7 @@
                     {
                         @if (request.Comments.Any(x => x.CustomerId == @ViewBag.CustomerId))
                         {
-                        <td><a asp-controller="Customer" asp-action="SeeComment" asp-route-rquestId="@request.Id" class="btn btn-info">نظرات سفارش</a></td>
+                        <td><a asp-controller="Customer" asp-action="SeeComment" asp-route-requestId="@request.Id" class="btn btn-info">نظرات سفارش</a></td>
                         }
                         else
                         {

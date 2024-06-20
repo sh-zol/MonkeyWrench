@@ -1,20 +1,20 @@
 ﻿@using Domain.Core.User.DTOs
 @model CustomerDTO
 
-<h5>
+<h3>
     خوش آمدید
     @Model.FullName
-</h5>
+</h3>
 
 @if(Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
 {
-    <a asp-controller="Account" asp-action="UpdateProfileCustomer">
+    <a asp-controller="Account" asp-action="UpdateProfileCustomer" class="btn btn-primary">
         پروفایلتون رو آپدیت کنید
     </a>
 }
 else
 {
-    <img src="@Model.FileLocation" width="100px" />
+    
     <p>
         درباره من:
         @Model.AboutMe
@@ -23,6 +23,13 @@ else
         آدرس:
         @Model.Address
     </p>
+    <div class="container-fluid">
+        <div class="col-lg-12">
+            <div class="post-card-image">
+                <img src="@Model.FileLocation" width="300" alt="">
+            </div>
+        </div>
+    </div>
 }
 
 <a asp-controller="Customer" asp-action="CustomerRequests" class="btn btn-primary"> لیست درخواست‌ها </a>

@@ -1,19 +1,19 @@
 ﻿@using Domain.Core.User.DTOs;
 @model AdminDTO;
-<h5>
+<h3>
     خوش آمدید
     @Model.FullName
-</h5>
+</h3>
 
-@if(Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
+@if (Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
 {
-    <a asp-controller="Account" asp-action="UpdateProfileAdmin">
-         پروفایل خود را آپدیت کنید
+    <a asp-controller="Account" asp-action="UpdateProfileCustomer" class="btn btn-primary">
+        پروفایلتون رو آپدیت کنید
     </a>
 }
 else
 {
-    <img src="@Model.FileLocation" width="100px" />
+
     <p>
         درباره من:
         @Model.AboutMe
@@ -22,6 +22,13 @@ else
         آدرس:
         @Model.Address
     </p>
+    <div class="container-fluid">
+        <div class="col-lg-12">
+            <div class="post-card-image">
+                <img src="@Model.FileLocation" width="300px" alt="">
+            </div>
+        </div>
+    </div>
 }
 
 <a asp-controller="Admin" asp-action="BidList" class="btn btn-primary"> لیست پیشنهادات </a>
