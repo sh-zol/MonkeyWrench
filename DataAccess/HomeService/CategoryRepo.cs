@@ -50,7 +50,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<CategoryDTO>> GetAll(CancellationToken cancellationToken)
         {
-            var list = await _context.Categories.Select(x => new CategoryDTO
+            var list = await _context.Categories.AsNoTracking().Select(x => new CategoryDTO
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -69,7 +69,7 @@ namespace DataAccess.HomeService
 
         public async Task<CategoryDTO>? GetById(int id, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.Where(x=>x.Id == id).Select(x=> new CategoryDTO
+            var category = await _context.Categories.AsNoTracking().Where(x=>x.Id == id).Select(x=> new CategoryDTO
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -89,7 +89,7 @@ namespace DataAccess.HomeService
 
         public async Task<CategoryDTO>? GetByTitle(string title, CancellationToken cancellationToken)
         {
-            var category = await _context.Categories.Where(x => x.Title == title).Select(x => new CategoryDTO
+            var category = await _context.Categories.AsNoTracking().Where(x => x.Title == title).Select(x => new CategoryDTO
             {
                 Id = x.Id,
                 Title = x.Title,

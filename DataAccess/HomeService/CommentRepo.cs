@@ -53,7 +53,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<CommentDTO>> GetAll(CancellationToken cancellationToken)
         {
-            var list = await _context.Comments.Select(x => new CommentDTO
+            var list = await _context.Comments.AsNoTracking().Select(x => new CommentDTO
             {
                 Id = x.Id,
                 Customer = x.Customer,
@@ -77,7 +77,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<CommentDTO>>? GetAllByRequestId(int requestId, CancellationToken cancellationToken)
         {
-            var list = await _context.Comments.Where(x => x.RequestId == requestId).Select(x => new CommentDTO
+            var list = await _context.Comments.AsNoTracking().Where(x => x.RequestId == requestId).Select(x => new CommentDTO
             {
                 Id = x.Id,
                 Customer = x.Customer,
@@ -99,7 +99,7 @@ namespace DataAccess.HomeService
 
         public async Task<CommentDTO>? GetById(int id, CancellationToken cancellationToken)
         {
-            var comment = await _context.Comments.Where(x => x.Id == id).Select(x => new CommentDTO
+            var comment = await _context.Comments.AsNoTracking().Where(x => x.Id == id).Select(x => new CommentDTO
             {
                 Id = x.Id,
                 Customer = x.Customer,
@@ -121,7 +121,7 @@ namespace DataAccess.HomeService
 
         public async Task<CommentDTO>? GetByRequestId(int requestId, CancellationToken cancellationToken)
         {
-            var comment = await _context.Comments.Where(x => x.RequestId == requestId).Select(x => new CommentDTO
+            var comment = await _context.Comments.AsNoTracking().Where(x => x.RequestId == requestId).Select(x => new CommentDTO
             {
                 Id = x.Id,
                 Customer = x.Customer,

@@ -25,7 +25,7 @@ namespace DataAccess.User
         public async Task<AdminDTO>? GetAdmin(int id, CancellationToken cancellationToken)
         {
           //  var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-            var admin = await _context.Admins
+            var admin = await _context.Admins.AsNoTracking()
                 .Include(x=>x.AppUser)
                 .Where(x => x.AppUser.Id == id).Select(x => new AdminDTO
             {
@@ -45,7 +45,7 @@ namespace DataAccess.User
         public async Task<CustomerDTO>? GetCustomer(int id, CancellationToken cancellationToken)
         {
            // var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-            var customer = await _context.Customers
+            var customer = await _context.Customers.AsNoTracking()
                 .Include(x=>x.AppUser)
                 .Where(x => x.AppUser.Id == id).Select(x => new CustomerDTO
             {
@@ -67,7 +67,7 @@ namespace DataAccess.User
         public async Task<ExpertDTO>? GetExpert(int id, CancellationToken cancellationToken)
         {
            // var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-            var expert = await _context.Experts
+            var expert = await _context.Experts.AsNoTracking()
                 .Include(x => x.AppUser)
                 .Where(x => x.AppUser.Id == id).Select(x => new ExpertDTO
             {

@@ -58,7 +58,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>> GetAll(CancellationToken cancellationToken)
         {
-            var list = await _context.Requests.Select(x => new RequestDTO
+            var list = await _context.Requests.AsNoTracking().Select(x => new RequestDTO
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -104,7 +104,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>?> GetAllByCustomerId(int customerId, CancellationToken cancellationToken)
         {
-            var list = await _context.Requests.Where(x => x.CustomerId == customerId).Select(x => new RequestDTO
+            var list = await _context.Requests.AsNoTracking().Where(x => x.CustomerId == customerId).Select(x => new RequestDTO
             {
                 Id = x.Id,
                 CustomerId = x.CustomerId,
@@ -140,7 +140,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>?> GetAllByExpertId(ExpertDTO expert, CancellationToken cancellationToken)
         {
-            var list = await _context.Requests
+            var list = await _context.Requests.AsNoTracking()
                 .Where(x => x.ExpertId == expert.Id)
                 .Select(x => new RequestDTO
                 {
@@ -177,7 +177,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>?> GetAllByRequestId(int requestId, CancellationToken cancellationToken)
         {
-            var list = await _context.Requests.Where(x => x.Id == requestId).Select(x => new RequestDTO
+            var list = await _context.Requests.AsNoTracking().Where(x => x.Id == requestId).Select(x => new RequestDTO
             {
                 Id = x.Id,
                 CustomerId = x.CustomerId,
@@ -230,7 +230,7 @@ namespace DataAccess.HomeService
                 return null;
             }
 
-            var requests = await _context.Requests.Where(x => serviceIds.Contains(x.ServiceId)).
+            var requests = await _context.Requests.AsNoTracking().Where(x => serviceIds.Contains(x.ServiceId)).
                 Select(x => new RequestDTO
                 {
                     Id = x.Id,
@@ -246,7 +246,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>?> GetAllExpertRequests(ExpertDTO expert, CancellationToken cancellationToken)
         {
-            var result = await _context.Requests
+            var result = await _context.Requests.AsNoTracking()
                 .Where(x => expert.Skills
                 .Select(x => x.ServiceId)
                 .Contains(x.Service.Id) && x.StatusId == 1 || x.StatusId == 2 || x.StatusId == 3 || x.StatusId == 4)
@@ -303,7 +303,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<RequestDTO>?> GetAllProcceingRequests(ExpertDTO expert, CancellationToken cancellationToken)
         {
-            var list = await _context.Requests.Where(x => x.ExpertId == expert.Id && expert.Skills
+            var list = await _context.Requests.AsNoTracking().Where(x => x.ExpertId == expert.Id && expert.Skills
             .Select(x => x.Id)
             .Contains(x.Service.Id) && x.StatusId == 3 || x.StatusId == 4)
             .Select(x => new RequestDTO
@@ -348,7 +348,7 @@ namespace DataAccess.HomeService
 
         public async Task<RequestDTO>? GetByRequestId(int requestId, CancellationToken cancellationToken)
         {
-            var request = await _context.Requests.Where(x => x.Id == requestId).Select(x => new RequestDTO
+            var request = await _context.Requests.AsNoTracking().Where(x => x.Id == requestId).Select(x => new RequestDTO
             {
                 Id = x.Id,
                 CustomerId = x.CustomerId,

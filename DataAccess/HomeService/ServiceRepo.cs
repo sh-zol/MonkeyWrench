@@ -54,7 +54,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<ServiceDTO>> GetAll(CancellationToken cancellationToken)
         {
-            var list = await _context.Services.Select(x => new ServiceDTO
+            var list = await _context.Services.AsNoTracking().Select(x => new ServiceDTO
             {
                 Id = x.Id,
                 Title = x.Title,
@@ -79,7 +79,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<ServiceDTO>>? GetByCategoryId(int categoryId, CancellationToken cancellationToken)
         {
-            var service = await _context.Services.Where(x => x.CategoryId == categoryId)
+            var service = await _context.Services.AsNoTracking().Where(x => x.CategoryId == categoryId)
                 .Select(x => new ServiceDTO
                 {
                     Id = x.Id,
@@ -106,7 +106,7 @@ namespace DataAccess.HomeService
 
         public async Task<ServiceDTO>? GetByServiceId(int serviceId, CancellationToken cancellationToken)
         {
-            var service = await _context.Services.Where(x => x.Id == serviceId)
+            var service = await _context.Services.AsNoTracking().Where(x => x.Id == serviceId)
                 .Select(x => new ServiceDTO
                 {
                     Id = x.Id,
@@ -129,7 +129,7 @@ namespace DataAccess.HomeService
 
         public async Task<ServiceDTO>? GetByTitle(string title, CancellationToken cancellationToken)
         {
-            var service = await _context.Services.Where(x => x.Title == title)
+            var service = await _context.Services.AsNoTracking().Where(x => x.Title == title)
                 .Select(x => new ServiceDTO
                 {
                     Id = x.Id,

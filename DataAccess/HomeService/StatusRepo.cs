@@ -68,7 +68,7 @@ namespace DataAccess.HomeService
 
         public async Task<StatusDTO> GetById(int id, CancellationToken cancellationToken)
         {
-            var status = await _context.Statuses.Where(x => x.Id == id)
+            var status = await _context.Statuses.AsNoTracking().Where(x => x.Id == id)
                 .Select(x => new StatusDTO
                 {
                     Id = id,

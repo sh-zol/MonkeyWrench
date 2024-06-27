@@ -58,7 +58,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<BidDTO>> GetAll(CancellationToken cancellationToken)
         {
-            var list = await _context.Bids.Select(x => new BidDTO
+            var list = await _context.Bids.AsNoTracking().Select(x => new BidDTO
             {
                 Id = x.Id,
                 Description = x.Description,
@@ -85,7 +85,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<BidDTO>> GetAllByExpertId(int expertId, CancellationToken cancellationToken)
         {
-            var list = await _context.Bids.Where(x => x.ExpertId == expertId).Select(x => new BidDTO
+            var list = await _context.Bids.AsNoTracking().Where(x => x.ExpertId == expertId).Select(x => new BidDTO
             {
                 Id = x.Id,
                 Description = x.Description,
@@ -112,7 +112,7 @@ namespace DataAccess.HomeService
 
         public async Task<List<BidDTO>> GetAllByRequestId(int requestId, CancellationToken cancellationToken)
         {
-            var list = await _context.Bids.Where(x => x.RequestId == requestId).Select(x => new BidDTO
+            var list = await _context.Bids.AsNoTracking().Where(x => x.RequestId == requestId).Select(x => new BidDTO
             {
                 Id = x.Id,
                 RequestId = x.RequestId,
@@ -136,7 +136,7 @@ namespace DataAccess.HomeService
 
         public async Task<BidDTO>? GetById(int id, CancellationToken cancellationToken)
         {
-            var bid = await _context.Bids.Where(x => x.Id == id).Select(x => new BidDTO
+            var bid = await _context.Bids.AsNoTracking().Where(x => x.Id == id).Select(x => new BidDTO
             {
                 Id = x.Id,
                 CreatedAt = x.CreatedAt,
