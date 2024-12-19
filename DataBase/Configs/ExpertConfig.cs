@@ -34,28 +34,28 @@ namespace DataBase.Configs
                 .WithOne(x => x.Expert);
 
             // seed 
-            //builder.HasData(new List<Expert>
-            //{
-            //    new Expert
-            //    {
-            //        Id = 1,
-            //        FullName = "صدرا دویران",
-            //        Email = "sadradn@gmail.com",
-            //        Password = "sh19451960",
-            //        PhoneNumber = "09127518144",
-            //        AppUserId = 5
+            builder.HasData(new List<Expert>
+            {
+                new Expert
+                {
+                    Id = 1,
+                    FullName = "صدرا دویران",
+                    Email = "sadradn@gmail.com",
+                    Password = "sh19451960",
+                    PhoneNumber = "09127518144",
+                    AppUserId = 5
 
-            //    },
-            //    new Expert
-            //    {
-            //        Id = 2,
-            //        FullName = "سهیل جیبویی",
-            //        Email = "soheilj@gmail.com",
-            //        Password = "sh19451960",
-            //        PhoneNumber = "09104029183",
-            //        AppUserId = 6
-            //    }
-            //});
+                },
+                new Expert
+                {
+                    Id = 2,
+                    FullName = "سهیل جیبویی",
+                    Email = "soheilj@gmail.com",
+                    Password = "sh19451960",
+                    PhoneNumber = "09104029183",
+                    AppUserId = 6
+                }
+            });
         }
     }
 }

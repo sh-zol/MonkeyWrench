@@ -34,19 +34,19 @@ namespace DataBase.Configs
                 .WithOne(x => x.Admin);
 
             //seed
-            //builder.HasData(new List<Admin>
-            //{
-            //    new Admin {
-            //        Id = 1,
-            //        FullName = "شاهین ذوالقدری",
-            //        Email = "zolghadrisahin@ymail.com",
-            //        Password = "sh19451960",
-            //        PhoneNumber = "09193017184",
-            //        Address="Tehran marzdaran",
-            //        AboutMe = "i'm admin",
-            //        AppUserId = 1
-            //    }
-            //});
+            builder.HasData(new List<Admin>
+            {
+                new Admin {
+                    Id = 1,
+                    FullName = "شاهین ذوالقدری",
+                    Email = "zolghadrisahin@ymail.com",
+                    Password = "sh19451960",
+                    PhoneNumber = "09193017184",
+                    Address="Tehran marzdaran",
+                    AboutMe = "i'm admin",
+                    AppUserId = 1
+                }
+            });
         }
     }
 }

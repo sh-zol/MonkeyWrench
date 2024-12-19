@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20240620094205_added_new_time")]
-    partial class added_new_time
+    [Migration("20241219092235_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -511,6 +511,20 @@ namespace DataBase.Migrations
                         .IsUnique();
 
                     b.ToTable("Admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AboutMe = "i'm admin",
+                            Address = "Tehran marzdaran",
+                            AppUserId = 1,
+                            Email = "zolghadrisahin@ymail.com",
+                            FullName = "شاهین ذوالقدری",
+                            Password = "sh19451960",
+                            PhoneNumber = "09193017184",
+                            Role = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.Core.User.Entities.AppUser", b =>
@@ -579,6 +593,110 @@ namespace DataBase.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "b6271f8a-3dcf-4cca-a52d-32a9be4c30ae",
+                            Email = "zolghadrisahin@ymail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ZOLGHADRISAHIN@YMAIL.COM",
+                            NormalizedUserName = "ZOLGHADRISAHIN@YMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAENfZjMGitjpkjyQEK0IR4rhMYpsgtC+LQtNK2tLSYKIPD5ph5beoYOL3nYbgaRL2/Q==",
+                            PhoneNumber = "09193017184",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d11bb794-cfdf-4bc8-a673-748e4e3e4557",
+                            TwoFactorEnabled = false,
+                            UserName = "zolghadrisahin@ymail.com"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e79977e4-6ce1-4a9e-8528-154d5383ce6a",
+                            Email = "shakibzolghadri@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SHAKIBZOLGHADRI@GMAIL.COM",
+                            NormalizedUserName = "SHAKIBZOLGHADRI@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAe83+Fz5rtSNKzI2wxbLtL4kG7CQNa4Th+/NrqVag7bY7wZtuqFB84+22hpMXWWvw==",
+                            PhoneNumber = "09106265176",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "3a6ecc5a-deba-4dd2-bfa7-997ebd45b9c8",
+                            TwoFactorEnabled = false,
+                            UserName = "shakibzolghadri@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a2749eba-bf8b-41f5-a4e3-a4045b8b10c5",
+                            Email = "amirfarshad@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "AMIRFARSHAD@GMAIL.COM",
+                            NormalizedUserName = "AMIRFARSHAD@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ3l7Ffw+YIQjjDZtYbAP6eeIK8mT+4lueTpGSYpVJMzciRYyzaq1IW1us3SznH3tw==",
+                            PhoneNumber = "09125254199",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e803e1a6-4760-4925-a0e4-494545c1596e",
+                            TwoFactorEnabled = false,
+                            UserName = "amirfarshad@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a286fbbd-3430-4e84-aa32-d7a2f2c8af83",
+                            Email = "arshiahp@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ARSHIAHP@GMAIL.COM",
+                            NormalizedUserName = "ARSHIAHP@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKQjCxOl/omvJH6YyIaYPKBhZEQT6gtMJ6NqYWkPk7gAFpUaCLaq5v49nfG8MAdKIg==",
+                            PhoneNumber = "09331476832",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "c1a1b76b-a7f2-4bf6-944f-7e533c8c5273",
+                            TwoFactorEnabled = false,
+                            UserName = "arshiahp@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bffa4464-986a-4836-9cb9-146917f05df8",
+                            Email = "sadradn@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SADRADN@GMAIL.COM",
+                            NormalizedUserName = "SADRADN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAENdaokPPdhxj76MP9USWMMAJJ9/TfGbwzduU59mNRFfW/u5stBbPW/LZFJF1uEZaZQ==",
+                            PhoneNumber = "09127518144",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ccbc5306-77a1-4a18-ad86-c7ab3292ee5f",
+                            TwoFactorEnabled = false,
+                            UserName = "sadradn@gmail.com"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fef4dfb0-4a9d-424e-a2e7-ce6dd9a6489d",
+                            Email = "soheilj@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SOHEILJ@GMAIL.COM",
+                            NormalizedUserName = "SOHEILJ@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC8i4V3hoDn7FDYZjkfq/dyi8ua5a+iQV7VP5beN0Bsgmp9OBM6hvQeR9QbblBbc2A==",
+                            PhoneNumber = "09104029183",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "dca971cf-35d2-438e-95ea-a01de161b5f5",
+                            TwoFactorEnabled = false,
+                            UserName = "soheilj@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Core.User.Entities.Customer", b =>
@@ -632,6 +750,40 @@ namespace DataBase.Migrations
                         .IsUnique();
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AboutMe = "مشتری هستم",
+                            Address = "تهران",
+                            AppUserId = 2,
+                            Email = "shakibzolghadri@gmail.com",
+                            FullName = "شکیب ذوالقدری",
+                            Password = "sh19451960",
+                            PhoneNumber = "09106265176",
+                            Role = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AppUserId = 3,
+                            Email = "amirfarshad@gmail.com",
+                            FullName = "امیر فرشاد",
+                            Password = "sh19451960",
+                            PhoneNumber = "09125254199",
+                            Role = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AppUserId = 4,
+                            Email = "arshiahp@gmail.com",
+                            FullName = "عرشیا حسن‌پور",
+                            Password = "sh19451960",
+                            PhoneNumber = "09331476832",
+                            Role = 1
+                        });
                 });
 
             modelBuilder.Entity("Domain.Core.User.Entities.Expert", b =>
@@ -685,6 +837,28 @@ namespace DataBase.Migrations
                         .IsUnique();
 
                     b.ToTable("Experts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AppUserId = 5,
+                            Email = "sadradn@gmail.com",
+                            FullName = "صدرا دویران",
+                            Password = "sh19451960",
+                            PhoneNumber = "09127518144",
+                            Role = 3
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AppUserId = 6,
+                            Email = "soheilj@gmail.com",
+                            FullName = "سهیل جیبویی",
+                            Password = "sh19451960",
+                            PhoneNumber = "09104029183",
+                            Role = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<int>", b =>
@@ -819,6 +993,38 @@ namespace DataBase.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 6,
+                            RoleId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>

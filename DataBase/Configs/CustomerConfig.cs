@@ -34,36 +34,36 @@ namespace DataBase.Configs
                 .WithOne(x => x.Customer);
 
             // seed 
-            //builder.HasData(new List<Customer>
-            //{
-            //    new Customer { Id = 1,
-            //    FullName = "شکیب ذوالقدری",
-            //    Email = "shakibzolghadri@gmail.com",
-            //    Password = "sh19451960",
-            //    PhoneNumber = "09106265176",
-            //    Address = "تهران",
-            //    AboutMe = "مشتری هستم",
-            //    AppUserId = 2
-            //},
-            //    new Customer
-            //    {
-            //        Id = 2,
-            //        FullName = "امیر فرشاد",
-            //        Email = "amirfarshad@gmail.com",
-            //        Password = "sh19451960",
-            //        PhoneNumber = "09125254199",
-            //        AppUserId = 3
-            //    },
-            //    new Customer
-            //    {
-            //        Id = 3,
-            //        FullName = "عرشیا حسن‌پور",
-            //        Email = "arshiahp@gmail.com",
-            //        Password = "sh19451960",
-            //        PhoneNumber = "09331476832",
-            //        AppUserId = 4
-            //    }
-            //});
+            builder.HasData(new List<Customer>
+            {
+                new Customer { Id = 1,
+                FullName = "شکیب ذوالقدری",
+                Email = "shakibzolghadri@gmail.com",
+                Password = "sh19451960",
+                PhoneNumber = "09106265176",
+                Address = "تهران",
+                AboutMe = "مشتری هستم",
+                AppUserId = 2
+            },
+                new Customer
+                {
+                    Id = 2,
+                    FullName = "امیر فرشاد",
+                    Email = "amirfarshad@gmail.com",
+                    Password = "sh19451960",
+                    PhoneNumber = "09125254199",
+                    AppUserId = 3
+                },
+                new Customer
+                {
+                    Id = 3,
+                    FullName = "عرشیا حسن‌پور",
+                    Email = "arshiahp@gmail.com",
+                    Password = "sh19451960",
+                    PhoneNumber = "09331476832",
+                    AppUserId = 4
+                }
+            });
         }
     }
 }

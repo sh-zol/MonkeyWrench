@@ -317,6 +317,8 @@ namespace DataBase.Migrations
                     Price = table.Column<int>(type: "int", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     DeadLine = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeadLineFa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDateFa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     ExpertId = table.Column<int>(type: "int", nullable: true),
                     StatusId = table.Column<int>(type: "int", nullable: true)
@@ -353,6 +355,8 @@ namespace DataBase.Migrations
                     DeadLine = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Price = table.Column<int>(type: "int", maxLength: 12, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedDateFa = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeadLineFa = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExpertId = table.Column<int>(type: "int", nullable: false),
                     IsAccepted = table.Column<bool>(type: "bit", nullable: false),
                     RequestId = table.Column<int>(type: "int", nullable: false)
@@ -436,6 +440,19 @@ namespace DataBase.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { 1, 0, "b6271f8a-3dcf-4cca-a52d-32a9be4c30ae", "zolghadrisahin@ymail.com", false, false, null, "ZOLGHADRISAHIN@YMAIL.COM", "ZOLGHADRISAHIN@YMAIL.COM", "AQAAAAIAAYagAAAAENfZjMGitjpkjyQEK0IR4rhMYpsgtC+LQtNK2tLSYKIPD5ph5beoYOL3nYbgaRL2/Q==", "09193017184", false, "d11bb794-cfdf-4bc8-a673-748e4e3e4557", false, "zolghadrisahin@ymail.com" },
+                    { 2, 0, "e79977e4-6ce1-4a9e-8528-154d5383ce6a", "shakibzolghadri@gmail.com", false, false, null, "SHAKIBZOLGHADRI@GMAIL.COM", "SHAKIBZOLGHADRI@GMAIL.COM", "AQAAAAIAAYagAAAAEAe83+Fz5rtSNKzI2wxbLtL4kG7CQNa4Th+/NrqVag7bY7wZtuqFB84+22hpMXWWvw==", "09106265176", false, "3a6ecc5a-deba-4dd2-bfa7-997ebd45b9c8", false, "shakibzolghadri@gmail.com" },
+                    { 3, 0, "a2749eba-bf8b-41f5-a4e3-a4045b8b10c5", "amirfarshad@gmail.com", false, false, null, "AMIRFARSHAD@GMAIL.COM", "AMIRFARSHAD@GMAIL.COM", "AQAAAAIAAYagAAAAEJ3l7Ffw+YIQjjDZtYbAP6eeIK8mT+4lueTpGSYpVJMzciRYyzaq1IW1us3SznH3tw==", "09125254199", false, "e803e1a6-4760-4925-a0e4-494545c1596e", false, "amirfarshad@gmail.com" },
+                    { 4, 0, "a286fbbd-3430-4e84-aa32-d7a2f2c8af83", "arshiahp@gmail.com", false, false, null, "ARSHIAHP@GMAIL.COM", "ARSHIAHP@GMAIL.COM", "AQAAAAIAAYagAAAAEKQjCxOl/omvJH6YyIaYPKBhZEQT6gtMJ6NqYWkPk7gAFpUaCLaq5v49nfG8MAdKIg==", "09331476832", false, "c1a1b76b-a7f2-4bf6-944f-7e533c8c5273", false, "arshiahp@gmail.com" },
+                    { 5, 0, "bffa4464-986a-4836-9cb9-146917f05df8", "sadradn@gmail.com", false, false, null, "SADRADN@GMAIL.COM", "SADRADN@GMAIL.COM", "AQAAAAIAAYagAAAAENdaokPPdhxj76MP9USWMMAJJ9/TfGbwzduU59mNRFfW/u5stBbPW/LZFJF1uEZaZQ==", "09127518144", false, "ccbc5306-77a1-4a18-ad86-c7ab3292ee5f", false, "sadradn@gmail.com" },
+                    { 6, 0, "fef4dfb0-4a9d-424e-a2e7-ce6dd9a6489d", "soheilj@gmail.com", false, false, null, "SOHEILJ@GMAIL.COM", "SOHEILJ@GMAIL.COM", "AQAAAAIAAYagAAAAEC8i4V3hoDn7FDYZjkfq/dyi8ua5a+iQV7VP5beN0Bsgmp9OBM6hvQeR9QbblBbc2A==", "09104029183", false, "dca971cf-35d2-438e-95ea-a01de161b5f5", false, "soheilj@gmail.com" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "IsActive", "Title" },
                 values: new object[,]
@@ -459,6 +476,43 @@ namespace DataBase.Migrations
                     { 3, "متخصص به محل رسید و شروع به انجام کار است", null },
                     { 4, "کار متخصص به پایان رسید و در انتظار پرداخت", null },
                     { 5, "پرداخت انجام شد و درخواست به پایان رسید", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Admins",
+                columns: new[] { "Id", "AboutMe", "Address", "AppUserId", "Email", "FileLocation", "FullName", "Password", "PhoneNumber", "Role" },
+                values: new object[] { 1, "i'm admin", "Tehran marzdaran", 1, "zolghadrisahin@ymail.com", null, "شاهین ذوالقدری", "sh19451960", "09193017184", 1 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { 1, 1 },
+                    { 2, 2 },
+                    { 2, 3 },
+                    { 2, 4 },
+                    { 3, 5 },
+                    { 3, 6 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "AboutMe", "Address", "AppUserId", "Email", "FileLocation", "FullName", "Password", "PhoneNumber", "Role" },
+                values: new object[,]
+                {
+                    { 1, "مشتری هستم", "تهران", 2, "shakibzolghadri@gmail.com", null, "شکیب ذوالقدری", "sh19451960", "09106265176", 1 },
+                    { 2, null, null, 3, "amirfarshad@gmail.com", null, "امیر فرشاد", "sh19451960", "09125254199", 1 },
+                    { 3, null, null, 4, "arshiahp@gmail.com", null, "عرشیا حسن‌پور", "sh19451960", "09331476832", 1 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Experts",
+                columns: new[] { "Id", "AboutMe", "Address", "AppUserId", "Email", "FileLocation", "FullName", "Password", "PhoneNumber", "Role" },
+                values: new object[,]
+                {
+                    { 1, null, null, 5, "sadradn@gmail.com", null, "صدرا دویران", "sh19451960", "09127518144", 3 },
+                    { 2, null, null, 6, "soheilj@gmail.com", null, "سهیل جیبویی", "sh19451960", "09104029183", 3 }
                 });
 
             migrationBuilder.InsertData(
