@@ -1,29 +1,45 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model List<CommentDTO>;
-<h3>لیست نظرات </h3>
-<div class="col-6 text-start">
-</div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>نام </th>
-            <th>اعمالات</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var comment in Model)
-        {
+<div class="container mt-4">
+    <h3 class="text-center mb-3">لیست نظرات</h3>
+    <table class="table table-bordered table-sm text-center">
+        <thead class="table-light">
             <tr>
-                <td>@comment.Id</td>
-                <td>@comment.Description</td>
-                <td>
-                    <a asp-controller="Customer" asp-action="Index">
-                        بازگشت به داشبورد
-                    </a>
-                </td>
+                <th style="width: 10%;">شناسه</th>
+                <th style="width: 70%;">متن نظر</th>
+                <th style="width: 20%;">اعمالات</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var comment in Model)
+            {
+                <tr>
+                    <td>@comment.Id</td>
+                    <td class="text-wrap">@comment.Description</td>
+                    <td>
+                        <a asp-controller="Customer" asp-action="Index" class="btn btn-sm btn-primary">
+                            بازگشت
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table th, .table td {
+        vertical-align: middle;
+        padding: 0.5rem;
+    }
+
+    .table .text-wrap {
+        word-wrap: break-word;
+    }
+
+    .btn-sm {
+        font-size: 0.875rem;
+        padding: 0.3rem 0.6rem;
+    }
+</style>

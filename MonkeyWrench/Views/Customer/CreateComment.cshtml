@@ -1,13 +1,40 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model CommentDTO;
 
-<form method="post" asp-controller="Customer" asp-action="CreateComment">
-    <div class="form-floating">
-        <textarea asp-for="Description" class="form-control" placeholder=" نظر خود را درمورد سفارش با ما درمیان بگذارید" id="floatingTextarea"></textarea>
-        <label for="floatingTextarea">Comments</label>
-    </div>
-    <button type="submit" asp-route-requestId="@ViewBag.RequestId" asp-route-serviceId="@ViewBag.ServiceId" class="btn btn-primary mx-1">ثبت نظر</button>
-    <div>
-        <a asp-controller="Customer" asp-action="Index" class="btn btn-success">بازگشت</a>
-    </div>
-</form>
+<div class="container mt-4">
+    <form method="post" asp-controller="Customer" asp-action="CreateComment" class="form-horizontal">
+        <h3 class="text-center mb-4">ثبت نظر</h3>
+
+        <div class="form-floating mb-3">
+            <textarea asp-for="Description" class="form-control" placeholder="نظر خود را درمورد سفارش با ما درمیان بگذارید" id="floatingTextarea" style="height: 150px;"></textarea>
+            <label for="floatingTextarea">نظر خود را وارد کنید</label>
+            <span asp-validation-for="Description" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="submit" asp-route-requestId="@ViewBag.RequestId" asp-route-serviceId="@ViewBag.ServiceId" class="btn btn-primary me-2">ثبت نظر</button>
+            <a asp-controller="Customer" asp-action="Index" class="btn btn-secondary">بازگشت</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-horizontal .form-label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .small {
+        font-size: 0.8rem;
+    }
+</style>

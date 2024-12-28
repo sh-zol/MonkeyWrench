@@ -1,119 +1,121 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model RequestDTO;
 
-<div class="row">
-    <div class="col-6">
-        <h3>جزئیات سفارش</h3>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 mb-3">
+            <h3 class="text-center">جزئیات سفارش</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <td>ساعت ایجاد</td>
+                        <td>@Model.CreatedDate</td>
+                    </tr>
+                    <tr>
+                        <td>نوع سرویس</td>
+                        <td>@Model.Service.Title</td>
+                    </tr>
+                    <tr>
+                        <td>قیمت پایه</td>
+                        <td>@Model.Price</td>
+                    </tr>
+                    <tr>
+                        <td>آدرس</td>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <td>ساعت انجام</td>
+                        <td>@Model.DeadLine</td>
+                    </tr>
+                    <tr>
+                        <td>نام مشتری</td>
+                        <td>@Model.CustomerName</td>
+                    </tr>
+                    <tr>
+                        <td>نام متخصص</td>
+                        
+                            @if (Model.ExpertName == null)
+                            {
+                               <td>
+                                   متخصصی انتخاب نشده
+                               </td>
+                            }
+                            else
+                            {
+                                @Model.ExpertName
+                            }
+                        
+                    </tr>
+                    <tr>
+                        <td>وضعیت سفارش</td>
+                        <td>
+                            @if (Model.StatusId != null)
+                            {
+                                @switch (Model.StatusId)
+                                {
+                                    case 1:
+                                        <span>در انتظار پیشنهاد متخصصین</span>
+                                        ;
+                                        break;
+                                    case 2:
+                                        <span>پیشنهاد متخصص تایید شد</span>
+                                        ;
+                                        break;
+                                    case 3:
+                                        <span>متخصص به محل رسیده و در حال انجام سفارش است</span>
+                                        ;
+                                        break;
+                                    case 4:
+                                        <span>در انتظار پرداخت</span>
+                                        ;
+                                        break;
+                                    case 5:
+                                        <span>سفارش انجام شده</span>
+                                        ;
+                                        break;
+                                }
+                            }
+                        </td>
+                    </tr>
+
+                    @if (Model.StatusId == 2 || Model.StatusId == 3 || Model.StatusId == 4)
+                    {
+                        <tr>
+                            <td>مرحله بعد</td>
+                            <td>
+                                <a asp-controller="Expert" asp-action="NextStatus" asp-route-requestId="@Model.Id" class="btn btn-primary btn-sm">
+                                    وضعیت بعدی
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-4 text-center">
+            @if (Model.FileLocation == null)
+            {
+                <p class="text-muted">عکس ندارد</p>
+            }
+            else
+            {
+                <img src="@Model.FileLocation" class="img-fluid rounded shadow-sm order-image" alt="Order Image">
+            }
+        </div>
     </div>
 </div>
-<div>
-    <table class="table table-bordered">
-        <tr>
-            <td>ساعت ایجاد</td>
-            <td>@Model.CreatedDate</td>
-        </tr>
-        <tr>
-            <td>نوع سرویس</td>
-            <td>@Model.Service.Title</td>
-        </tr>
-        <tr>
-            <td>قیمت پایه</td>
-            <td>@Model.Price</td>
-        </tr>
-        <tr>
-            <td>آدرس</td>
-            <td>@Model.Address</td>
-        </tr>
-        <tr>
-            <td>ساعت انجام</td>
-            <td>@Model.DeadLine</td>
-        </tr>
-        <tr>
-            <td>نام مشتری</td>
-            <td>@Model.CustomerName</td>
-        </tr>
-        <tr>
-            <td>نام متخصص</td>
-            @if(Model.ExpertName == null){
-            <td>
-                هنوز انتخاب نشده
-            </td>
-            }
-            else{
-                <td>
-                    @Model.ExpertName
-                </td>
-            }
-        </tr>
-        <tr>
-            <td>وضعیت سفارش</td>
-            <td>وضعیت سفارش</td>
-            @if (Model.StatusId != null)
-            {
-                @if (Model.StatusId == 1)
-                {
-                    <td>
-                        در انتظار پیشنهاد متخصصین
-                    </td>
-                }
-                @if (Model.StatusId == 2)
-                {
-                    <td>
-                        پیشنهاد متخصص تایید شد
-                    </td>
-                }
-                @if (Model.StatusId == 3)
-                {
-                    <td>
-                        متخصص به محل رسیده و در حال انجام سفارش است
-                    </td>
-                }
-                @if (Model.StatusId == 4)
-                {
-                    <td>
-                        در انتظار پرداخت
-                    </td>
-                }
-                @if (Model.StatusId == 5)
-                {
-                    <td>
-                        سفارش انجام شده
-                    </td>
-                }
 
-            }
-        </tr>
-        @if (Model.StatusId == 2 || Model.StatusId == 3 || Model.StatusId == 4)
-        {
-            <tr>
-                <td>مرحله بعد</td>
-                <td><a asp-controller="Expert" asp-action="NextStatus" asp-route-requestId="@Model.Id" class="btn btn-primary">وضعیت بعدی</a></td>
-            </tr>
-        }
-        @if(Model.StatusId == 5)
-        {
-            <tr>
-                <td>
-                    سفارش انجام شده
-                </td>
-            </tr>
-        }
-
-    </table>
-    @if(Model.FileLocation == null)
-    {
-        <p>
-            عکس ندارد
-        </p>
+<style>
+    .order-image {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-top: 20px;
     }
-    else
-    {
-        <div class="container-fluid">
-            <div class="col-lg-12">
-                <div class="post-card-image">
-                    <img src="@Model.FileLocation" alt="">
-                </div>
-            </div>
-        </div>
-    }
-</div>
+</style>

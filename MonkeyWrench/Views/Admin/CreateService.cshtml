@@ -1,7 +1,7 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model ServiceDTO;
-<form method="post" asp-controller="Admin" asp-action="CreateService" enctype="multipart/form-data">
 
+<form method="post" asp-controller="Admin" asp-action="CreateService" enctype="multipart/form-data">
     <div class="border p-3">
         <div class="form-group row">
             <h2 class="text-info pl-3">اضافه کردن سرویس</h2>
@@ -9,54 +9,57 @@
 
         <div class="row">
             <div class="col-8">
-
                 <div class="form-group row p-3">
                     <div class="col-4">
-                        <label asp-for="Title">
-                            نام سرویس
-                        </label>
+                        <label asp-for="Title">نام سرویس</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" asp-for="Title" class="form-control" placeholder="نام سرویس"/>
+                        <input type="text" asp-for="Title" class="form-control" placeholder="نام سرویس" />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                 </div>
+
                 <div class="form-group row p-3">
                     <div class="col-4">
-                        <label asp-for="Description">
-                            توضیحات
-                        </label>
+                        <label asp-for="Description">توضیحات</label>
                     </div>
                     <div class="col-8">
-                        <input type="text" asp-for="Description" class="form-control" placeholder="توضیحات"/>
+                        <input type="text" asp-for="Description" class="form-control" placeholder="توضیحات" />
                         <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
+
                 <div class="form-group row p-3">
                     <div class="col-4">
-                        <label asp-for="CategoryId"></label>
+                        <label asp-for="CategoryId">دسته‌بندی</label>
                     </div>
                     <div class="col-8">
-                        <select asp-for="CategoryId" class="dropdown-item" asp-items="@ViewBag.Categories">
-                            <option disabled selected>انتخاب دسته بندی</option>
+                        <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories">
+                            <option disabled selected>انتخاب دسته‌بندی</option>
                         </select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
-                    <div class="custom-control custom-checkbox">
-                        <input id="IsActive" asp-for="IsActive" type="checkbox" class="custom-control-input">
-                        <label class="custom-control-label" for="IsActive"> فعال بودن </label>
+                </div>
+
+                <div class="form-group row p-3">
+                    <div class="col-4">
+                        <label>فعال بودن</label>
+                    </div>
+                    <div class="col-8">
+                        <div class="custom-control custom-checkbox">
+                            <input id="IsActive" asp-for="IsActive" type="checkbox" class="custom-control-input" />
+                            <label class="custom-control-label" for="IsActive">فعال بودن</label>
+                        </div>
                     </div>
                 </div>
+
                 <div class="form-group">
-                    <div class="d-inline-flex justify-content-around">
-                        <button type="submit" class="btn btn-primary mx-1">ثبت </button>
-                        <div>
-                            <a asp-controller="Service" asp-action="Index" class="btn btn-success">بازگشت</a>
-                        </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">ثبت</button>
+                        <a asp-controller="Service" asp-action="Index" class="btn btn-success">بازگشت</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </form>

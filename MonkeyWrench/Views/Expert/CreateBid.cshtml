@@ -1,43 +1,29 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model BidDTO;
 
-<form method="post" asp-controller="Expert" asp-action="CreateBid">
+<form method="post" asp-controller="Expert" asp-action="CreateBid" class="border p-3 rounded shadow-sm w-50 mx-auto">
+    <h2 class="text-center text-info mb-3">ارسال پیشنهاد</h2>
 
-    <div class="border p-3">
-        <div class="form-group row">
-            <h2 class="text-info pl-3">ارسال پیشنهاد</h2>
-        </div>
-
-        <div class="row">
-            <div class="col-8">
-
-                <div class="form-group row p-3">
-                    <div class="col-8">
-                        <label asp-for="Price">قیمت</label>
-                        <input  asp-for="Price" class="form-control" />
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                    <div class="col-8">
-                        <label asp-for="Description">توضیحات</label>
-                        <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="col-8">
-                        <label asp-for="DeadLine">زمان پایان</label>
-                        <input type="datetime-local" asp-for="DeadLine" class="form-control" />
-                        <span asp-validation-for="DeadLine" class="text-danger"></span>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="d-inline-flex justify-content-around">
-                        <button type="submit" asp-route-requestId="@ViewBag.RequestId" class="btn btn-primary mx-1">ارسال</button>
-                        <div>
-                            <a asp-controller="Expert" asp-action="Index"  class="btn btn-success">بازگشت</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="form-group mb-2">
+        <label asp-for="Price" class="form-label fw-bold">قیمت</label>
+        <input asp-for="Price" class="form-control form-control-sm" />
+        <span asp-validation-for="Price" class="text-danger small"></span>
     </div>
-    </form>
+
+    <div class="form-group mb-2">
+        <label asp-for="Description" class="form-label fw-bold">توضیحات</label>
+        <textarea asp-for="Description" class="form-control form-control-sm" rows="2"></textarea>
+        <span asp-validation-for="Description" class="text-danger small"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="DeadLine" class="form-label fw-bold">زمان پایان</label>
+        <input type="datetime-local" asp-for="DeadLine" class="form-control form-control-sm" />
+        <span asp-validation-for="DeadLine" class="text-danger small"></span>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <button type="submit" asp-route-requestId="@ViewBag.RequestId" class="btn btn-primary btn-sm">ارسال</button>
+        <a asp-controller="Expert" asp-action="Index" class="btn btn-secondary btn-sm">بازگشت</a>
+    </div>
+</form>

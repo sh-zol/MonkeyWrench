@@ -1,41 +1,64 @@
-﻿@using Domain.Core.User.DTOs;
-@model ExpertDTO;
+﻿@using Domain.Core.User.DTOs
+@model ExpertDTO
 
-<form asp-controller="Account" asp-action="UpdateProfileExpert" method="post" enctype="multipart/form-data">
-    <div class="form-group">
-        <label asp-for="FullName" class="control-label"> نام و نام خانوادگی </label>
-        <input asp-for="FullName" class="form-control" />
-        <span asp-validation-for="FullName" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Email" class="control-label"> ایمیل </label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address" class="control-label"> آدرس </label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AboutMe" class="control-label"> درباره من </label>
-        <textarea asp-for="AboutMe" class="form-control"></textarea>
-        <span asp-validation-for="AboutMe" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="control-label"> رمز </label>
-        <input asp-for="Password" class="form-control" type="password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="PhoneNumber" class="control-label"> شماره تلفن </label>
-        <input asp-for="PhoneNumber" class="form-control" />
-        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="File" class="control-label"> عکس </label>
-        <input asp-for="File" type="file" class="form-control" />
-        <span asp-validation-for="File" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary"> بروزرسانی پروفایل </button>
-</form>
+<div class="container mt-4">
+    <h3 class="text-center mb-4">بروزرسانی پروفایل</h3>
+
+    <form asp-controller="Account" asp-action="UpdateProfileExpert" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <!-- نام و نام خانوادگی -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="FullName" class="form-label">نام و نام خانوادگی</label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <!-- ایمیل -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Email" class="form-label">ایمیل</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <!-- آدرس -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Address" class="form-label">آدرس</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <!-- درباره من -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="AboutMe" class="form-label">درباره من</label>
+                <textarea asp-for="AboutMe" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="AboutMe" class="text-danger"></span>
+            </div>
+
+            <!-- رمز -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="Password" class="form-label">رمز</label>
+                <input asp-for="Password" class="form-control" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <!-- شماره تلفن -->
+            <div class="col-md-6 mb-3">
+                <label asp-for="PhoneNumber" class="form-label">شماره تلفن</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <!-- عکس -->
+            <div class="col-md-12 mb-3">
+                <label asp-for="File" class="form-label">عکس</label>
+                <input asp-for="File" type="file" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- دکمه ارسال -->
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">بروزرسانی پروفایل</button>
+        </div>
+    </form>
+</div>

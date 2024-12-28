@@ -1,10 +1,11 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model List<RequestDTO>;
 
-<h3> لیست سفارشات در حال انجام</h3>
-<table class="table table-striped table-light">
-    <thead>
-        <tr>
+<h3 class="text-center my-4">لیست سفارشات در حال انجام</h3>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead class="table-light">
+        <tr class="text-center">
             <th>شماره سفارش</th>
             <th>تاریخ ثبت</th>
             <th>نام مشتری</th>
@@ -12,24 +13,31 @@
             <th>آدرس</th>
             <th>زمان درخواست</th>
             <th>اعمالات</th>
-
         </tr>
     </thead>
     <tbody>
-
-        @foreach (var request in Model)
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var request in Model)
+            {
+                <tr class="text-center">
+                    <td>@request.Id</td>
+                    <td>@request.CreatedDate</td>
+                    <td>@request.CustomerName</td>
+                    <td>@request.Price</td>
+                    <td>@request.Address</td>
+                    <td>@request.DeadLine</td>
+                    <td>
+                        <a asp-controller="Expert" asp-action="RequestDetails" asp-route-requestId="@request.Id" class="btn btn-primary btn-sm">جزئیات</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@request.Id</td>
-                <td>@request.CreatedDate</td>
-                <td>@request.CustomerName</td>
-                <td>@request.Price</td>
-                <td>@request.Address</td>
-                <td>@request.DeadLine</td>
-                <td>
-                    <a asp-controller="Expert" asp-action="RequestDetails" asp-route-requestId="@request.Id" class="btn btn-primary">جزئیات</a>
+                <td colspan="7" class="text-center text-muted">هیچ سفارشی در حال انجام نیست.</td>
             </tr>
-
         }
     </tbody>
 </table>

@@ -1,27 +1,53 @@
-﻿@using Domain.Core.HomeService.DTOS;
+﻿@using Domain.Core.HomeService.DTOS
 @model List<BidDTO>
 
-<h3>لیست پشنهادات درخواست</h3>
-<table class="table table-striped table-light">
-    <thead>
-        <tr>
-            <th>شماره سفارش</th>
-            <th>نام متخصص</th>
-            <th>قیمت پیشنهادی</th>
-            <th>شناسه متخصص</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="container mt-4">
+    <h3 class="mb-4">لیست پیشنهادات درخواست</h3>
 
-        @foreach (var bid in Model)
-        {
-                    <tr>
-                        <td>@bid.Id</td>
-                        <td>@bid.Expert.FullName</td>
-                        <td>@bid.Price</td>
-                        <td>@bid.ExpertId</td>
-                    </tr>
-                }
-        }
-    </tbody>
-</table>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>شماره سفارش</th>
+                <th>نام متخصص</th>
+                <th>قیمت پیشنهادی</th>
+                <th>شناسه متخصص</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bid in Model)
+            {
+                <tr>
+                    <td>@bid.Id</td>
+                    <td>@bid.Expert.FullName</td>
+                    <td>@bid.Price <span>هزار تومان</span></td>
+                    <td>@bid.ExpertId</td>
+                </tr>
+            }
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">هیچ پیشنهادی یافت نشد.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table {
+        font-size: 0.9rem;
+    }
+
+    h3 {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .text-muted {
+        color: #6c757d;
+    }
+</style>

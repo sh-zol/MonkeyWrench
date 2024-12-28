@@ -1,20 +1,39 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model List<ServiceDTO>;
 
-<form asp-controller="Account" asp-action="UpdateExpertSkills" method="post">
-    <input style="display:none" asp-route-expertId="@ViewBag.expertId" />
-    <div class="mb-3">
-        <label for="services" class="form-label">ویرایش مهارت ها</label>
-        <select name="services" class="select-chosen form-select" tabindex="8" multiple style="width:350px;" data-placeholder="مهارت ها" asp-items="@ViewBag.Services">
-            @if (Model != null)
-            {
-                @foreach (var service in Model)
-                {
-                    <option value=@service.Id selected>@service.Title</option>
-                }
-            }
-
-        </select>
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-lg-12 text-center">
+            <h1 class="text-primary mt-3"> ارائه سرویس </h1>
+        </div>
     </div>
-    <input class="btn btn-success" type="submit" value="ویرایش" />
-</form>
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <form asp-controller="Account" asp-action="UpdateExpertSkills" method="post" class="border p-4 rounded shadow bg-light">
+        <input type="hidden" asp-route-expertId="@ViewBag.expertId" />
+
+        <div class="mb-3 text-center">
+            <label for="services" class="form-label fw-bold">ویرایش مهارت‌ها</label>
+            <select id="services"
+                    name="services"
+                    class="form-select select-chosen"
+                    multiple
+                    style="width:350px;"
+                    data-placeholder="مهارت‌ها"
+                    asp-items="@ViewBag.Services">
+
+                @if (Model != null && Model.Any())
+                {
+                    @foreach (var service in Model)
+                    {
+                        <option value="@service.Id" selected>@service.Title</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-success">ویرایش</button>
+        </div>
+    </form>
+</div>

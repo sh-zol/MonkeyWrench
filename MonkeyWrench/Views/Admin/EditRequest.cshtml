@@ -1,45 +1,42 @@
-﻿@using Domain.Core.HomeService.DTOS;
-@model RequestDTO;
+﻿@using Domain.Core.HomeService.DTOS
+@model RequestDTO
 
-<form method="post" asp-controller="Admin" asp-action="EditRequest">
+<div class="container mt-4">
+    <form method="post" asp-controller="Admin" asp-action="EditRequest" class="border p-4 rounded shadow-sm">
+        <h3 class="text-primary mb-4">ویرایش سفارش</h3>
 
-    <div class="border p-3">
-        <div class="form-group row">
-            <h2 class="text-info pl-3">ویرایش سفارش</h2>
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label">قیمت</label>
+            <input asp-for="Price" class="form-control" placeholder="قیمت" />
+            <span asp-validation-for="Price" class="text-danger"></span>
         </div>
 
-
-        <div class="row">
-            <div class="col-8">
-                <div class="form-group row p-3">
-                    <div class="col-8">
-                        <input asp-for="Price" class="form-control" placeholder="قیمت"/>
-                        <span asp-validation-for="Price" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="form-group row p-3">
-                    <div class="col-4">
-                        <label asp-for="StatusId"></label>
-                    </div>
-                    <div class="col-8">
-                        <select asp-for="StatusId" class="select-chosen" asp-items="ViewBag.Statuses">
-                            <option disabled selected>انتخاب وضعیت</option>
-                        </select>
-                        <span asp-validation-for="StatusId" class="text-danger"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="d-inline-flex justify-content-around">
-                        <button type="submit" class="btn btn-primary mx-1">ویرایش</button>
-                        <div>
-                            <a asp-controller="Admin" asp-action="Index" class="btn btn-success">بازگشت</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label asp-for="StatusId" class="form-label">وضعیت سفارش</label>
+            <select asp-for="StatusId" class="form-select" asp-items="ViewBag.Statuses">
+                <option disabled selected>انتخاب وضعیت</option>
+            </select>
+            <span asp-validation-for="StatusId" class="text-danger"></span>
         </div>
-    </div>
 
-</form>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary mx-2">ویرایش</button>
+            <a asp-controller="Admin" asp-action="Index" class="btn btn-secondary">بازگشت</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-control, .form-select {
+        font-size: 0.9rem;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+</style>

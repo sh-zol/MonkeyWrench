@@ -1,38 +1,44 @@
 ﻿@using Domain.Core.User.DTOs;
 @model AdminDTO;
-<h3>
-    خوش آمدید
-    @Model.FullName
-</h3>
 
-@if (Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
-{
-    <a asp-controller="Account" asp-action="UpdateProfileCustomer" class="btn btn-primary">
-        پروفایلتون رو آپدیت کنید
-    </a>
-}
-else
-{
+<div class="container mt-4">
+    <h3 class="text-center">
+        خوش آمدید، @Model.FullName
+    </h3>
 
-    <p>
-        درباره من:
-        @Model.AboutMe
-    </p>
-    <p>
-        آدرس:
-        @Model.Address
-    </p>
-    <div class="container-fluid">
-        <div class="col-lg-12">
-            <div class="post-card-image">
-                <img src="@Model.FileLocation" width="300px" alt="">
+    @if (Model.FileLocation == null || Model.AboutMe == null || Model.Address == null)
+    {
+        <div class="text-center mt-3">
+            <a asp-controller="Account" asp-action="UpdateProfileExpert" class="btn btn-primary">
+                پروفایلتون رو آپدیت کنید
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="profile-section mt-4">
+            <p><strong>درباره من:</strong> @Model.AboutMe</p>
+            <p><strong>آدرس:</strong> @Model.Address</p>
+
+            <div class="text-center mt-3">
+                <img src="@Model.FileLocation" class="rounded-circle profile-image" alt="Profile Picture">
             </div>
         </div>
-    </div>
-}
+    }
 
-<a asp-controller="Admin" asp-action="BidList" class="btn btn-primary"> لیست پیشنهادات </a>
-<a asp-controller="Admin" asp-action="RequestList" class="btn btn-primary"> لیست درخواست‌ها </a>
-<a asp-controller="Admin" asp-action="CategoryList" class="btn btn-primary">لیست دسته بندی‌ها</a>
-<a asp-controller="Admin" asp-action="ServiceList" class="btn btn-primary"> لیست سرویس‌ها</a>
-<a asp-controller="Admin" asp-action="CommentList" class="btn btn-primary">لیست کامنت‌عا  ‌</a>
+    <div class="action-buttons mt-4 text-center">
+        <a asp-controller="Admin" asp-action="BidList" class="btn btn-primary"> لیست پیشنهادات </a>
+        <a asp-controller="Admin" asp-action="RequestList" class="btn btn-primary"> لیست درخواست‌ها </a>
+        <a asp-controller="Admin" asp-action="CategoryList" class="btn btn-primary">لیست دسته بندی‌ها</a>
+        <a asp-controller="Admin" asp-action="ServiceList" class="btn btn-primary"> لیست سرویس‌ها</a>
+        <a asp-controller="Admin" asp-action="CommentList" class="btn btn-primary">لیست کامنت‌ها  ‌</a>
+    </div>
+</div>
+
+<style>
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+</style>

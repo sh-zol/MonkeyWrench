@@ -1,30 +1,42 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model List<CommentDTO>;
 
-<h3>لیست سفارشات</h3>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>نام مشتری</th>
-            <th>سرویس</th>
-            <th>نظر مشتری</th>
-            <th>اعمالات</th>
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-lg-12 text-center">
+            <h1 class="text-primary mt-3">لیست نظرات مشتریان</h1>
+        </div>
+    </div>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var comment in Model)
-        {
-            <tr>
-                <td>@comment.Id</td>
-                <td>@comment.Customer.FullName</td>
-                <td>@comment.ServiceId</td>
-                <td>@comment.Description</td>
-                <td>
-                    <a asp-controller="Admin" asp-action="DeleteComment" asp-route-id="@comment.Id" class="btn btn-danger">حذف</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">شناسه</th>
+                        <th scope="col">نام مشتری</th>
+                        <th scope="col">سرویس</th>
+                        <th scope="col">نظر مشتری</th>
+                        <th scope="col">عملیات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var comment in Model)
+                    {
+                        <tr>
+                            <td>@comment.Id</td>
+                            <td>@comment.Customer.FullName</td>
+                            <td>@comment.Service.Title</td>
+                            <td>@comment.Description</td>
+                            <td>
+                                <a asp-controller="Admin" asp-action="DeleteComment" asp-route-id="@comment.Id" class="btn btn-danger btn-sm">
+                                    حذف
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

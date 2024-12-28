@@ -1,31 +1,51 @@
 ﻿@using Domain.Core.HomeService.DTOS;
-@model List<ServiceDTO>;
+@model List<ServiceDTO>
 
-<h3>لیست سرویس ها</h3>
-<div class="col-6 text-start">
-    <a asp-controller="Admin" asp-action="CreateService" class="btn btn-success">اضافه کردن سرویس  </a>
-</div>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>شناسه</th>
-            <th>نام </th>
-            <th>اعمالات</th>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>لیست سرویس‌ها</h3>
+        <a asp-controller="Admin" asp-action="CreateService" class="btn btn-success btn-sm">
+            اضافه کردن سرویس
+        </a>
+    </div>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var service in Model)
-        {
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-light">
             <tr>
-                <td>@service.Id</td>
-                <td>@service.Title</td>
-                <td>
-                    <a asp-controller="Admin" asp-action="DeleteService" asp-route-id="@service.Id">
-                        حذف سرویس
-                    </a>
-                </td>
+                <th>شناسه</th>
+                <th>نام سرویس</th>
+                <th class="text-center">اعمالات</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var service in Model)
+            {
+                <tr>
+                    <td>@service.Id</td>
+                    <td>@service.Title</td>
+                    <td class="text-center">
+                        <a asp-controller="Admin" asp-action="DeleteService" asp-route-id="@service.Id"
+                           class="btn btn-danger btn-sm">
+                            حذف سرویس
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+    }
+
+    h3 {
+        font-weight: bold;
+        color: #333;
+    }
+</style>

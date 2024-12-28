@@ -20,9 +20,11 @@ namespace MonkeyWrench.Controllers
             _category = categoryAppService;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index(CancellationToken cancellationToken)
         {
-            return View();
+            var list = await _category.GetAll(cancellationToken);
+            return View(list);
         }
 
         public IActionResult Privacy()

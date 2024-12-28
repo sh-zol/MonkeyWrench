@@ -1,63 +1,64 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model RequestDTO;
 
-<form method="post" asp-controller="Customer" asp-action="CreateRequest" enctype="multipart/form-data">
+<div class="container mt-4">
+    <form method="post" asp-controller="Customer" asp-action="CreateRequest" enctype="multipart/form-data" class="form-horizontal">
+        <h3 class="text-center mb-4">ثبت درخواست</h3>
 
-    <div class="border p-3">
-        <div class="form-group row">
-            <h2 class="text-info pl-3">ثبت درخواست</h2>
+        <div class="mb-3">
+            <label asp-for="DeadLine" class="form-label">زمان موردنظر</label>
+            <input type="datetime-local" asp-for="DeadLine" class="form-control" />
+            <span asp-validation-for="DeadLine" class="text-danger small"></span>
         </div>
 
-        <div class="row">
-            <div class="col-8">
-
-                <div class="form-group row p-3">
-                    <div class="col-8">
-                        <label asp-for="DeadLine"> زمان موردنظر </label>
-                        <input type="datetime-local" asp-for="DeadLine" class="form-control" />
-                        <span asp-validation-for="DeadLine" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row p-3">
-                    
-                    <div class="col-8">
-                        <label asp-for="Title"> موضوع </label>
-                        <input type="text" asp-for="Title" class="form-control" />
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row p-3">
-                    <div class="col-8">
-                        <label asp-for="Description"> توضیحات </label>
-                        <input type="text" asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row p-3">
-                    <div class="col-8">
-                        <label asp-for="Address">
-                            آدرس
-                        </label>
-                        <input type="text" asp-for="Address" class="form-control" />
-                        <span asp-validation-for="Address" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group row p-3">
-                    <div class="col-4">
-                            <label asp-for="File" class="control-label"> عکس </label>
-                            <input asp-for="File" type="file" class="form-control" />
-                            <span asp-validation-for="File" class="text-danger"></span>
-                        </div>
-                <div class="form-group">
-                    <div class="d-inline-flex justify-content-around">
-                        <button type="submit" asp-route-serviceId="@ViewBag.ServiceId" class="btn btn-primary mx-1">ثبت سفارش</button>
-                        <div>
-                            <a asp-controller="Customer" asp-action="Index" class="btn btn-success">بازگشت</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">موضوع</label>
+            <input type="text" asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger small"></span>
         </div>
-    </div>
-    </div>
-</form>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">توضیحات</label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label">آدرس</label>
+            <input type="text" asp-for="Address" class="form-control" />
+            <span asp-validation-for="Address" class="text-danger small"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="File" class="form-label">عکس</label>
+            <input asp-for="File" type="file" class="form-control" />
+            <span asp-validation-for="File" class="text-danger small"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" asp-route-serviceId="@ViewBag.ServiceId" class="btn btn-primary">ثبت سفارش</button>
+            <a asp-controller="Customer" asp-action="Index" class="btn btn-secondary">بازگشت</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .form-horizontal .form-label {
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .small {
+        font-size: 0.8rem;
+    }
+</style>

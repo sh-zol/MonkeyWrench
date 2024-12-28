@@ -1,36 +1,43 @@
 ﻿@using Domain.Core.HomeService.DTOS;
 @model List<CategoryDTO>;
 
-@foreach(var item in Model)
-{
-    @if(item.IsActive == true)
-    {
-        <section class="section masonry-layout pt-45">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card-columns">
-                        <div class="card">
-                            <div class="post-card">
-                                <div class="post-card-image">
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-lg-12 text-center">
+            <h1 class="text-primary mt-3"> لیست دسته‌بندی‌ها </h1>
+        </div>
+    </div>
+
+<section class="section masonry-layout pt-45">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-columns d-flex flex-wrap">
+                    @foreach (var item in Model)
+                    {
+                        @if (item.IsActive)
+                        {
+                            <div class="card" style="width: 18rem; margin: 10px;">
+                                <div class="post-card">
+                                    <div class="post-card-image">
                                         <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id">
-                                        <img src="~/Images/WallpaperDog-10970322.png" alt="">
-                                    </a>
-        
-                                </div>
-                                <div class="post-card-content">
-                                        <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id"> @item.Title </a>
-                                    <h5>
-                                            <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id"> @item.Title </a>
-                                    </h5>
-                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                            <img src="~/Images/WallpaperDog-10970322.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-card-content">
+                                        <h5>
+                                            <a asp-controller="Home" asp-action="ShowCategoryServices" asp-route-categoryId="@item.Id">
+                                                @item.Title
+                                            </a>
+                                        </h5>
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        </section>
-    }
-}
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
